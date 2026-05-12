@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Capa_Datos/Capa_Datos.csproj" />
+  <Project Path="Capa_Negocios/Capa_Negocios.csproj" />
+  <Project Path="Monolito4bm/Monolito4bm.csproj" />
+</Solution>

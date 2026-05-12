@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="deberes_4to" Class="MonolitoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=deberes_4to;User ID=clase4b;Encrypt=False" SettingsObjectName="Capa_Datos.Properties.Settings" SettingsPropertyName="deberes_4toConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_rol" Member="tbl_rol">
+    <Type Name="tbl_rol">
+      <Column Name="rol_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_rol" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="tbl_rol_tbl_usuario" Member="tbl_usuario" ThisKey="rol_id" OtherKey="rol_id" Type="tbl_usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_usuario" Member="tbl_usuario">
+    <Type Name="tbl_usuario">
+      <Column Name="usu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_nombres" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_cedula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="correo_electronico" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="contraseña" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="edad" Type="System.Int32" DbType="Int" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="usu_nickname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="numero_celular" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="codigo_otp" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fecha_otp_generado" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="intentos_fallidos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rol_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_creacion" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_usuario_tbl_usuario_fotos" Member="tbl_usuario_fotos" ThisKey="usu_id" OtherKey="usu_id" Type="tbl_usuario_fotos" />
+      <Association Name="tbl_rol_tbl_usuario" Member="tbl_rol" ThisKey="rol_id" OtherKey="rol_id" Type="tbl_rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_usuario_fotos" Member="tbl_usuario_fotos">
+    <Type Name="tbl_usuario_fotos">
+      <Column Name="foto_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre_archivo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="content_type" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="foto" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="fecha_subida" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="es_principal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_usuario_tbl_usuario_fotos" Member="tbl_usuario" ThisKey="usu_id" OtherKey="usu_id" Type="tbl_usuario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

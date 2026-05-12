@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Monolito">
+  <DataContextMoniker Name="/MonolitoDataContext" />
+  <nestedChildShapes>
+    <classShape Id="88b42ef1-48c9-4fba-95bd-584eecdc51cf" absoluteBounds="0.875, 0.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/MonolitoDataContext/tbl_rol" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc00c283-f138-4d97-a523-c30597ffabbc" absoluteBounds="0.89, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eba5a0f3-f020-4513-b036-aed715e20acd" absoluteBounds="3.5, 1, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/MonolitoDataContext/tbl_usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b32d432b-1d8a-4d9f-99d8-7b80c4c405f4" absoluteBounds="3.515, 1.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="38e55f7b-e544-4966-900f-91a82a06ceb2" absoluteBounds="0.75, 2.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/MonolitoDataContext/tbl_usuario_fotos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="487d11ba-02eb-4bb8-80df-ad05066ab8cc" absoluteBounds="0.76499999999999968, 3.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 1.63064697265625); (3.5 : 1.63064697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MonolitoDataContext/tbl_rol/tbl_rol_tbl_usuario" />
+      <nodes>
+        <classShapeMoniker Id="88b42ef1-48c9-4fba-95bd-584eecdc51cf" />
+        <classShapeMoniker Id="eba5a0f3-f020-4513-b036-aed715e20acd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 3.56330485026042); (2.75 : 3.56330485026042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MonolitoDataContext/tbl_usuario/tbl_usuario_tbl_usuario_fotos" />
+      <nodes>
+        <classShapeMoniker Id="eba5a0f3-f020-4513-b036-aed715e20acd" />
+        <classShapeMoniker Id="38e55f7b-e544-4966-900f-91a82a06ceb2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
