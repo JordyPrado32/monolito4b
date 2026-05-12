@@ -50,6 +50,11 @@ namespace Monolito4bm
             Response.Redirect("register.aspx");
         }
 
+        protected void btnRecuperar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RecuperarClave.aspx");
+        }
+
         /// <summary>
         /// Obtiene el usu_id usando la capa de datos directamente.
         /// Se hace aquí para no cambiar la firma de IniciarSesion.
@@ -63,6 +68,8 @@ namespace Monolito4bm
 
         private void MostrarError(string msg)
         {
+            // Esto forzará una ventana emergente en el navegador
+            ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('ERROR: {msg}');", true);
             litError.Text = msg;
             pnlError.Visible = true;
         }

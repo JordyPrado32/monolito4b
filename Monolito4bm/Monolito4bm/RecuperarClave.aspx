@@ -67,7 +67,7 @@
   <form id="frmRecuperar" runat="server">
     <div class="card">
       <h2>🔑 Recuperar Contraseña</h2>
-      <p class="subtitulo">Ingresa tu nickname o correo electrónico y recibirás<br/>una clave temporal por SMS.</p>
+      <p class="subtitulo">Ingresa tu nickname o correo electrónico y recibirás<br/>una clave temporal por correo o SMS.</p>
 
       <asp:Panel ID="pnlMensaje" runat="server" Visible="false">
         <div id="divMsg" class="msg" runat="server"></div>

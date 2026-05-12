@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Capa_Datos; // Ve a Datos
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Capa_Datos; // Ve a Datos
 
 namespace Capa_Negocios
 {
@@ -106,5 +107,6 @@ namespace Capa_Negocios
             if (calculado == 10) calculado = 0;
             return calculado == verificador;
         }
+        public List<tbl_usuario_fotos> Fotos { get; set; } = new List<tbl_usuario_fotos>();
     }
 }

@@ -116,6 +116,7 @@
     <Compile Include="tbl_foto.cs" />
     <Compile Include="tbl_tipo_usuario.cs" />
     <Compile Include="tbl_usuario.cs" />
+    <Compile Include="UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Capa_Datos\Capa_Datos.csproj">

@@ -283,6 +283,8 @@ namespace Capa_Datos
 		
 		private System.DateTime _fecha_creacion;
 		
+		private bool _clave_temporal;
+		
 		private EntitySet<tbl_usuario_fotos> _tbl_usuario_fotos;
 		
 		private EntityRef<tbl_rol> _tbl_rol;
@@ -319,6 +321,8 @@ namespace Capa_Datos
     partial void Onrol_idChanged();
     partial void Onfecha_creacionChanging(System.DateTime value);
     partial void Onfecha_creacionChanged();
+    partial void Onclave_temporalChanging(bool value);
+    partial void Onclave_temporalChanged();
     #endregion
 		
 		public tbl_usuario()
@@ -612,6 +616,26 @@ namespace Capa_Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_clave_temporal", DbType="Bit NOT NULL")]
+		public bool clave_temporal
+		{
+			get
+			{
+				return this._clave_temporal;
+			}
+			set
+			{
+				if ((this._clave_temporal != value))
+				{
+					this.Onclave_temporalChanging(value);
+					this.SendPropertyChanging();
+					this._clave_temporal = value;
+					this.SendPropertyChanged("clave_temporal");
+					this.Onclave_temporalChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_usuario_tbl_usuario_fotos", Storage="_tbl_usuario_fotos", ThisKey="usu_id", OtherKey="usu_id")]
 		public EntitySet<tbl_usuario_fotos> tbl_usuario_fotos
 		{
@@ -824,7 +848,7 @@ namespace Capa_Datos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_foto", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_foto", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary foto
 		{
 			get

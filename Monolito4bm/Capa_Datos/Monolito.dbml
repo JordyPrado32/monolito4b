@@ -24,6 +24,7 @@
       <Column Name="intentos_fallidos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rol_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="fecha_creacion" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="clave_temporal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="tbl_usuario_tbl_usuario_fotos" Member="tbl_usuario_fotos" ThisKey="usu_id" OtherKey="usu_id" Type="tbl_usuario_fotos" />
       <Association Name="tbl_rol_tbl_usuario" Member="tbl_rol" ThisKey="rol_id" OtherKey="rol_id" Type="tbl_rol" IsForeignKey="true" />
     </Type>

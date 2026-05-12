@@ -102,12 +102,46 @@ namespace Capa_Datos
         {
             using (SqlConnection con = new SqlConnection(cadena))
             {
-                string query = @"SELECT usu_id, usu_nombres, numero_celular
+                string query = @"SELECT usu_id, usu_nombres, numero_celular, correo_electronico
                                  FROM   tbl_usuario
                                  WHERE  usu_nickname       = @valor
                                     OR  correo_electronico = @valor";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@valor", valor);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                con.Open();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        public DataTable ObtenerEstadoCuentas()
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                string query = @"SELECT usu_id, usu_nombres, usu_nickname, correo_electronico,
+                                        intentos_fallidos, estado_cuenta, ultimo_intento, rol_id
+                                 FROM   vw_EstadoCuentas
+                                 ORDER BY rol_id, usu_nombres";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                con.Open();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        public DataTable ObtenerUsuarioPorId(int usuId)
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                string query = @"SELECT usu_id, usu_nombres, usu_nickname, correo_electronico,
+                                        numero_celular, intentos_fallidos, rol_id, clave_temporal
+                                 FROM   tbl_usuario
+                                 WHERE  usu_id = @id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", usuId);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 con.Open();
@@ -166,6 +200,22 @@ namespace Capa_Datos
             using (SqlConnection con = new SqlConnection(cadena))
             {
                 string query = "UPDATE tbl_usuario SET intentos_fallidos = 0 WHERE usu_id = @id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", usuId);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void ResetearIntentosAdmin(int usuId)
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                string query = @"UPDATE tbl_usuario
+                                 SET    intentos_fallidos = 0,
+                                        codigo_otp = NULL,
+                                        fecha_otp_generado = NULL
+                                 WHERE  usu_id = @id";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", usuId);
                 con.Open();
