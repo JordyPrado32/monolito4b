@@ -42,7 +42,7 @@ namespace Capa_Datos
     #endregion
 		
 		public MonolitoDataContext() : 
-				base(global::Capa_Datos.Properties.Settings.Default.deberes_4toConnectionString, mappingSource)
+				base(global::Capa_Datos.Properties.Settings.Default.deberes_4toConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -93,6 +93,21 @@ namespace Capa_Datos
 			{
 				return this.GetTable<tbl_usuario_fotos>();
 			}
+		}
+		
+		public System.Data.Linq.Table<vw_EstadoCuentas> vw_EstadoCuentas
+		{
+			get
+			{
+				return this.GetTable<vw_EstadoCuentas>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ResetearIntentosCaducados")]
+		public int sp_ResetearIntentosCaducados()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -920,6 +935,159 @@ namespace Capa_Datos
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vw_EstadoCuentas")]
+	public partial class vw_EstadoCuentas
+	{
+		
+		private int _usu_id;
+		
+		private string _usu_nombres;
+		
+		private string _usu_nickname;
+		
+		private string _correo_electronico;
+		
+		private int _intentos_fallidos;
+		
+		private string _estado_cuenta;
+		
+		private System.Nullable<System.DateTime> _ultimo_intento;
+		
+		private int _rol_id;
+		
+		public vw_EstadoCuentas()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int usu_id
+		{
+			get
+			{
+				return this._usu_id;
+			}
+			set
+			{
+				if ((this._usu_id != value))
+				{
+					this._usu_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_nombres", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string usu_nombres
+		{
+			get
+			{
+				return this._usu_nombres;
+			}
+			set
+			{
+				if ((this._usu_nombres != value))
+				{
+					this._usu_nombres = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_nickname", DbType="NVarChar(100)")]
+		public string usu_nickname
+		{
+			get
+			{
+				return this._usu_nickname;
+			}
+			set
+			{
+				if ((this._usu_nickname != value))
+				{
+					this._usu_nickname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_correo_electronico", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string correo_electronico
+		{
+			get
+			{
+				return this._correo_electronico;
+			}
+			set
+			{
+				if ((this._correo_electronico != value))
+				{
+					this._correo_electronico = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intentos_fallidos", DbType="Int NOT NULL")]
+		public int intentos_fallidos
+		{
+			get
+			{
+				return this._intentos_fallidos;
+			}
+			set
+			{
+				if ((this._intentos_fallidos != value))
+				{
+					this._intentos_fallidos = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado_cuenta", DbType="VarChar(34) NOT NULL", CanBeNull=false)]
+		public string estado_cuenta
+		{
+			get
+			{
+				return this._estado_cuenta;
+			}
+			set
+			{
+				if ((this._estado_cuenta != value))
+				{
+					this._estado_cuenta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ultimo_intento", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> ultimo_intento
+		{
+			get
+			{
+				return this._ultimo_intento;
+			}
+			set
+			{
+				if ((this._ultimo_intento != value))
+				{
+					this._ultimo_intento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rol_id", DbType="Int NOT NULL")]
+		public int rol_id
+		{
+			get
+			{
+				return this._rol_id;
+			}
+			set
+			{
+				if ((this._rol_id != value))
+				{
+					this._rol_id = value;
+				}
 			}
 		}
 	}
